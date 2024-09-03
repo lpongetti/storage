@@ -1,4 +1,4 @@
-module storage
+module github.com/lpongetti/storage
 
 go 1.23.0
 
