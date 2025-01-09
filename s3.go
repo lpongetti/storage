@@ -39,7 +39,7 @@ func NewS3(cfg *AwsConfig) IStorage {
 	}
 }
 
-func (r *S3Storage) Download(ctx context.Context, bucket, key string) (io.Reader, error) {
+func (r *S3Storage) Download(ctx context.Context, bucket, key string) (io.ReadCloser, error) {
 	out, err := r.s3Client.GetObject(ctx, &s3.GetObjectInput{Bucket: &bucket, Key: &key})
 	if err != nil {
 		return nil, fmt.Errorf("couldn't get object from S3 %v:%v: %v", bucket, key, err)
